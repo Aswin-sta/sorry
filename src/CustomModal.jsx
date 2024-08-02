@@ -46,7 +46,7 @@ const CustomModal = ({
   const hasPlayedAudioRef = useRef(false); // Track if audio has been played
 
   const handleNo = () => {
-    if (!hasPlayedAudioRef.current) {
+    if (depth === 0 && !hasPlayedAudioRef.current) {
       hasPlayedAudioRef.current = true;
       const audio = new Audio(audioFile); // Use imported audio file
       audio.play();
