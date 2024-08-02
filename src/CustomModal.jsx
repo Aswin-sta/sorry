@@ -44,11 +44,11 @@ const CustomModal = ({
 }) => {
   const [nestedModals, setNestedModals] = useState([]);
   const hasPlayedAudioRef = useRef(false); // Track if audio has been played
-
+  const audio = new Audio(audioFile);
+  
   const handleNo = () => {
     if (depth === 0 && !hasPlayedAudioRef.current) {
       hasPlayedAudioRef.current = true;
-      const audio = new Audio(audioFile); // Use imported audio file
       audio.play();
     }
     // Open a new nested modal at a deeper depth
@@ -56,6 +56,7 @@ const CustomModal = ({
   };
 
   const handleYes = () => {
+    audio.pause();
     if (onYesCallback) {
       onYesCallback(); // Call the callback function
     }
