@@ -89,8 +89,9 @@ function Flashlight() {
               padding: 3,
             }}
           >
-            <Typography variant="h6">Password adikku </Typography>
-            <Typography variant="body2">Ee vakillel hema kure bhudimuttiyane</Typography>
+            <Typography variant="body2" sx={{ color: "black" }}>
+              Ee vakillel hema kure bhudimuttiyane
+            </Typography>
             <TextField
               type="password"
               placeholder="password"
