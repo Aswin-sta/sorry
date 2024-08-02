@@ -1,0 +1,40 @@
+/* EasterEgg.css */
+.easter-egg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  overflow: hidden;
+  z-index: 9999;
+  pointer-events: none; /* So that the EasterEgg does not interfere with other elements */
+}
+
+.easter-egg-circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px; /* Half of width and height to center the circle at cursor */
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  border-radius: 50%;
+  pointer-events: none; /* So that the circle does not interfere with other elements */
+}
+
+.password-box {
+  display: none; /* Hide the box by default */
+  background-color: white; /* Background color for the password box */
+  border: 1px solid #ccc; /* Border color for the password box */
+  padding: 20px; /* Padding inside the box */
+  background-color: blue;
+  border-radius: 8px; /* Rounded corners for the box */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for a slight elevation effect */
+}
+
+.password-box.visible {
+  display: block; /* Show the box when it should be visible */
+}
