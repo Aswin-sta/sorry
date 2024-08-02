@@ -68,7 +68,7 @@ function Flashlight() {
 
   const handleSubmit = () => {
     // Replace with actual password check
-    if (password === "correctPassword") {
+    if (password === "aaykotte") {
       navigate("/lastpage"); // Redirect to another page on correct password
     } else {
       setHint("Incorrect password. Try again.");
