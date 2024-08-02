@@ -2,6 +2,7 @@
 import { Modal, Box, Button } from "@mui/material";
 import { useState, useRef } from "react";
 import "./buttonStyles.css"; // Import the CSS file
+import audioFile from "./ee_akalam.mp3"; // Import the audio file
 
 const modalStyle = (depth, initial) => {
   const isLargeScreen = window.innerWidth >= 1024; // Adjust breakpoint as needed
@@ -12,8 +13,6 @@ const modalStyle = (depth, initial) => {
     : isLargeScreen
     ? 50 + depth * 20
     : 50 + depth * 10;
-
-  // Calculate margin to ensure spacing between modals
 
   return {
     position: "fixed", // Changed to fixed positioning for better control
@@ -49,7 +48,7 @@ const CustomModal = ({
   const handleNo = () => {
     if (!hasPlayedAudioRef.current) {
       hasPlayedAudioRef.current = true;
-      const audio = new Audio("src/ee akalam.mp3"); // Replace with your audio file path
+      const audio = new Audio(audioFile); // Use imported audio file
       audio.play();
     }
     // Open a new nested modal at a deeper depth
@@ -60,11 +59,16 @@ const CustomModal = ({
     if (onYesCallback) {
       onYesCallback(); // Call the callback function
     }
+    onClose(); // Close the modal
+  };
+
+  const handleClose = () => {
+    // Do nothing
   };
 
   return (
     <>
-      <Modal open={open} onClose={onClose}>
+      <Modal open={open} onClose={handleClose}>
         <Box sx={modalStyle(depth, initial)}>
           <Box
             sx={{
