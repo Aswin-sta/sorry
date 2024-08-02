@@ -23,6 +23,8 @@ const TypingText = ({ text, onComplete }) => {
         audio.play(); // Play the sound
       } else {
         clearInterval(typingInterval);
+         audio.pause(); // Stop the sound
+         audio.currentTime = 0; // Reset the audio playback position
         if (onComplete) {
           onComplete();
         }
@@ -49,7 +51,7 @@ function HomePage() {
   const [thanksMessage, setThanksMessage] = useState(false);
   const audio = useMemo(() => new Audio(sound), []); // Create an Audio object
 
-  const LIMIT = 10;
+  const LIMIT = 50;
   const navigate = useNavigate(); // Hook for navigation
 
   const handleClick = () => {
