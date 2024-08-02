@@ -47,6 +47,7 @@ function HomePage() {
   const [showLoader, setShowLoader] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [thanksMessage, setThanksMessage] = useState(false);
+  const audio = useMemo(() => new Audio(sound), []); // Create an Audio object
 
   const LIMIT = 10;
   const navigate = useNavigate(); // Hook for navigation
