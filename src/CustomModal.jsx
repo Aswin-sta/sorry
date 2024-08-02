@@ -18,7 +18,7 @@ const modalStyle = (depth, initial) => {
     position: "fixed", // Changed to fixed positioning for better control
     top: `calc(50% - ${verticalOffset}px)`, // Center vertically with offset
     left: `50%`,
-    transform: "translate(-50%, -50%)", // Adjust horizontal translation
+    transform: "translate(-50%, -50%)`, // Adjust horizontal translation
     bgcolor: "background.paper",
     boxShadow:
       "rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px",
@@ -44,23 +44,19 @@ const CustomModal = ({
 }) => {
   const [nestedModals, setNestedModals] = useState([]);
   const hasPlayedAudioRef = useRef(false); // Track if audio has been played
+  const audioRef = useRef(new Audio(audioFile)); // Use ref to create audio object only once
 
   const handleNo = () => {
     if (depth === 0 && !hasPlayedAudioRef.current) {
       hasPlayedAudioRef.current = true;
-      const audio = new Audio(audioFile); // Use imported audio file
-      audio.play();
+      audioRef.current.play();
     }
     // Open a new nested modal at a deeper depth
     setNestedModals([...nestedModals, depth + 1]);
   };
 
   const handleYes = () => {
-     if (audioRef.current) {
-      audioRef.current.pause(); // Pause the audio
-      audioRef.current = null; // Clear the audio instance
-    }
-    
+    audioRef.current.pause();
     if (onYesCallback) {
       onYesCallback(); // Call the callback function
     }
