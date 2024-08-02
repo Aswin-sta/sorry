@@ -6,10 +6,11 @@ import "./App.css";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import CustomModal from "./CustomModal";
+import sound from "src/sound.mp3"; // Import the new sound file
 
 const TypingText = ({ text, onComplete }) => {
   const [displayedText, setDisplayedText] = useState("");
-  const audioRef = useRef(null);
+  const audio = useMemo(() => new Audio(sound), []); // Create an Audio object
 
   useEffect(() => {
     let index = 0;
@@ -19,9 +20,7 @@ const TypingText = ({ text, onComplete }) => {
       index++;
       if (index < text.length) {
         setDisplayedText((prev) => prev + text[index]);
-        if (audioRef.current) {
-          audioRef.current.play();
-        }
+        audio.play(); // Play the sound
       } else {
         clearInterval(typingInterval);
         if (onComplete) {
@@ -31,12 +30,11 @@ const TypingText = ({ text, onComplete }) => {
     }, 100);
 
     return () => clearInterval(typingInterval);
-  }, [text, onComplete]);
+  }, [text, onComplete, audio]);
 
   return (
     <>
       <p className="line anim-typewriter">{displayedText}</p>
-      <audio ref={audioRef} src="src/sound.wav" preload="auto"></audio>
     </>
   );
 };
