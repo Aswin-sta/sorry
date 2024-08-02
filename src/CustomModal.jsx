@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Modal, Box, Button } from "@mui/material";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./buttonStyles.css"; // Import the CSS file
 import audioFile from "./ee akalam.mp3"; // Import the audio file
 
@@ -44,19 +44,27 @@ const CustomModal = ({
 }) => {
   const [nestedModals, setNestedModals] = useState([]);
   const hasPlayedAudioRef = useRef(false); // Track if audio has been played
-  const audio = new Audio(audioFile);
-  
+  const audioRef = useRef(new Audio(audioFile)); // Create audio reference
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    return () => {
+      audio.pause(); // Pause the audio when the component unmounts
+      audio.currentTime = 0; // Reset the audio to the start
+    };
+  }, []);
+
   const handleNo = () => {
     if (depth === 0 && !hasPlayedAudioRef.current) {
       hasPlayedAudioRef.current = true;
-      audio.play();
+      audioRef.current.play();
     }
     // Open a new nested modal at a deeper depth
     setNestedModals([...nestedModals, depth + 1]);
   };
 
   const handleYes = () => {
-    audio.pause();
+    audioRef.current.pause(); // Pause the audio
     if (onYesCallback) {
       onYesCallback(); // Call the callback function
     }
