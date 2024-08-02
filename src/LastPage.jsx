@@ -26,17 +26,7 @@ function LastPage() {
     navigate("/"); // Redirect to the home page or another route
   };
 
-  useEffect(() => {
-    const handleMouseMove = () => {
-      handlePlayAudio();
-    };
 
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [isAudioPlaying]);
 
   return (
     <Box
