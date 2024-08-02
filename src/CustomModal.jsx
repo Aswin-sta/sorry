@@ -65,6 +65,7 @@ const CustomModal = ({
 
   const handleYes = () => {
     audioRef.current.pause(); // Pause the audio
+    audio.pause();
     if (onYesCallback) {
       onYesCallback(); // Call the callback function
     }
