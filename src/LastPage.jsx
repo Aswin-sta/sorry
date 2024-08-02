@@ -1,17 +1,17 @@
-// LastPage.jsx
 import { useRef, useState, useEffect } from "react";
 import { Typography, Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./LastPage.css"; // Import the CSS file for animations
+import audioFile from "./VID_bla.mp3"; // Import the new audio file
 
 function LastPage() {
   const navigate = useNavigate();
-  const audioRef = useRef(null);
+  const audio = useRef(new Audio(audioFile)); // Create an Audio object
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
   const handlePlayAudio = () => {
-    if (!isAudioPlaying && audioRef.current) {
-      audioRef.current
+    if (!isAudioPlaying && audio.current) {
+      audio.current
         .play()
         .then(() => {
           setIsAudioPlaying(true);
@@ -51,16 +51,14 @@ function LastPage() {
       }}
     >
       <Button
-        className="moving-text" // Corrected class name
+        className="moving-text"
         variant="text"
         onClick={handlePlayAudio}
         style={{ cursor: "pointer" }}
       >
-        <Typography variant="h1">{isAudioPlaying ? " 😬 " : "😂"}</Typography>{" "}
-        {/* Corrected Typography variant */}
+        <Typography variant="h1">{isAudioPlaying ? " 😬 " : "😂"}</Typography>
       </Button>
 
-      <audio ref={audioRef} src="src/VID_bla.mp3" />
       <Button
         className="button-50"
         style={{ zIndex: 999, marginTop: "16px" }}
