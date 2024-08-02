@@ -6,7 +6,7 @@ import "./App.css";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import CustomModal from "./CustomModal";
-import sound from "src/sound.mp3"; // Import the new sound file
+import sound from "./sound.mp3"; // Import the new sound file
 
 const TypingText = ({ text, onComplete }) => {
   const [displayedText, setDisplayedText] = useState("");
