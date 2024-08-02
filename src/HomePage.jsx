@@ -48,7 +48,7 @@ function HomePage() {
   const [showModal, setShowModal] = useState(false);
   const [thanksMessage, setThanksMessage] = useState(false);
 
-  const LIMIT = 2;
+  const LIMIT = 100;
   const navigate = useNavigate(); // Hook for navigation
 
   const handleClick = () => {
