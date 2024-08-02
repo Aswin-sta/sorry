@@ -89,10 +89,11 @@ function Flashlight() {
               padding: 3,
             }}
           >
-            <Typography variant="h6">Enter Password</Typography>
+            <Typography variant="h6">Password adikku </Typography>
+            <Typography variant="body2">Ee vakillel hema kure bhudimuttiyane</Typography>
             <TextField
               type="password"
-              placeholder="Enter your password"
+              placeholder="password"
               fullWidth
               value={password}
               onChange={handlePasswordChange}
