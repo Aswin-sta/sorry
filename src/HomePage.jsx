@@ -31,7 +31,11 @@ const TypingText = ({ text, onComplete }) => {
       }
     }, 100);
 
-    return () => clearInterval(typingInterval);
+       return () => {
+      clearInterval(typingInterval);
+      audio.pause(); // Stop the sound if the component is unmounted
+      audio.currentTime = 0; // Reset the audio playback position
+    };
   }, [text, onComplete, audio]);
 
   return (
