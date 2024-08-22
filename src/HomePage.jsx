@@ -312,7 +312,7 @@ function HomePage() {
   const [showMessage, setShowMessage] = useState(false);
   const audio = useMemo(() => new Audio(sound), []); // Create an Audio object
 
-  const LIMIT = 50;
+  const LIMIT = 10;
   const navigate = useNavigate(); // Hook for navigation
 
   const handleClick = () => {
@@ -489,7 +489,11 @@ function HomePage() {
         </>
       )}
       {showMessage && (
-        <h2>"Don't ever dare to think you made problems in my life"</h2>
+      <div>
+        <h2>"Mathido , ethu oru gummm laaa ......"</h2>
+        <h2>"pazhaya pole samsarikyya.."</h2>
+        <h5>"PS: Nee alochich kootithu okke thettaaannu "</h2>
+        </div>
       )}
 
       {showSorry && shalayaArray.length < LIMIT && (
