@@ -324,7 +324,7 @@ function HomePage() {
       setShowMessage(false);
       setShowSorry(true);
       setTextKey((prevKey) => prevKey + 1);
-    }, 3000);
+    }, 5000);
   };
 
   const handleComplete = () => {
