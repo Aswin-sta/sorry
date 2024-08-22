@@ -492,7 +492,7 @@ function HomePage() {
       <div>
         <h2>"Mathido , ethu oru gummm laaa ......"</h2>
         <h2>"pazhaya pole samsarikyya.."</h2>
-        <h5>"PS: Nee alochich kootithu okke thettaaannu "</h2>
+        <h5>"PS: Nee alochich kootithu okke thettaaannu "</h5>
         </div>
       )}
 
